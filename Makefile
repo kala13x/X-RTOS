@@ -32,7 +32,7 @@ endif
 all: X-RTOS
 
 X_FLAGS := \
-	-nostartfiles -Xlinker --gc-sections -Wl,-Map,RTOSDemo.map \
+	-nostartfiles -Xlinker --gc-sections -Wl,-Map,X-RTOS.map \
 	-T./bsp/metal.default.lds -march=rv32imac -mabi=ilp32 \
 	-mcmodel=medlow -Wl,--start-group -lc -lgcc -Wl,--end-group \
 	--specs=nano.specs -Xlinker --defsym=__heap_max=1
@@ -48,7 +48,7 @@ X-RTOS: $(OBJS) $(USER_OBJS)
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) X-RTOS
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) X-RTOS X-RTOS.bin X-RTOS.map
 	-@echo ' '
 
 post-build:
