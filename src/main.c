@@ -108,7 +108,7 @@ static void prvSetupHardware( TaskContext_t *pxCtx )
 
 int main( void )
 {
-    vPrintString("Starting X-RTOS on SiFive (RISC-V)\r\n");
+    vPrintString("Starting X-RTOS on SiFive RevB (RISC-V)\r\n");
     TaskContext_t *pxCtx = prvCreateTaskContext();
 
     prvSetupHardware( pxCtx );
