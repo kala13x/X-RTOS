@@ -1,14 +1,14 @@
 /*!
- *  @file x-rtos/src/sifive.c
+ *  @file X-RTOS/src/sifive.c
  *
- *  This source is part of "x-rtos" project
+ *  This source is part of "X-RTOS" project
  *  2015-2020  Sun Dro (s.kalatoz@gmail.com)
  * 
  * @brief Implementation of hook / interrupt handlers
  * and helper functions for the SiFive RevB (RISK-V).
  */
 
-#include "xrtos.h"
+#include "x-rtos.h"
 #include "sifive.h"
 
 /* Registers used to Initialize the PLIC. */

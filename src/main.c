@@ -1,13 +1,13 @@
 /*!
- *  @file x-rtos/src/main.c
+ *  @file X-RTOS/src/main.c
  *
- *  This source is part of "x-rtos" project
+ *  This source is part of "X-RTOS" project
  *  2015-2020  Sun Dro (s.kalatoz@gmail.com)
  * 
  * @brief Main source file of X-RTOS project.
  */
 
-#include "xrtos.h"
+#include "x-rtos.h"
 #include "sifive.h"
 
 /* Priorities used by the tasks. */

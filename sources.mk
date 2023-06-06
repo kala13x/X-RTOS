@@ -16,8 +16,8 @@ SUBDIRS := \
 FreeRTOS \
 FreeRTOS/portable/GCC/RISC-V \
 FreeRTOS/portable/MemMang \
-freedom-metal/gloss \
-freedom-metal/src \
-freedom-metal/src/drivers \
+MetalSDK/gloss \
+MetalSDK/src \
+MetalSDK/src/drivers \
 src \
 

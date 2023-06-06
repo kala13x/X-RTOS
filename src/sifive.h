@@ -1,7 +1,7 @@
 /*!
- *  @file x-rtos/src/sifive.h
+ *  @file X-RTOS/src/sifive.h
  *
- *  This source is part of "x-rtos" project
+ *  This source is part of "X-RTOS" project
  *  2015-2020  Sun Dro (s.kalatoz@gmail.com)
  * 
  * @brief Implementation of hook / interrupt handlers

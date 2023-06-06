@@ -9,9 +9,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/subdir.mk
--include freedom-metal/src/drivers/subdir.mk
--include freedom-metal/src/subdir.mk
--include freedom-metal/gloss/subdir.mk
+-include MetalSDK/src/drivers/subdir.mk
+-include MetalSDK/src/subdir.mk
+-include MetalSDK/gloss/subdir.mk
 -include FreeRTOS/portable/MemMang/subdir.mk
 -include FreeRTOS/portable/GCC/RISC-V/subdir.mk
 -include FreeRTOS/subdir.mk

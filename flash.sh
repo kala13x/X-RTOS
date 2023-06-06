@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=$PATH:/opt/risk-v/toolchains/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-centos6/bin/
+export PATH=$PATH:/opt/risk-v/toolchains/riscv64-unknown-elf-toolchain-10.2.0-x86_64/bin/
 
 JLINK_OPTIONS="-device FE310 -if JTAG -speed 4000"
 GDB=riscv64-unknown-elf-gdb

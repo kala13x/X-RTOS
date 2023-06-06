@@ -14,10 +14,10 @@ C_DEPS += \
 
 C_INCLUDES := \
 	-I"$(PROJECT_ROOT)" \
+	-I"$(METAL_SDK_PATH)" \
 	-I"$(FREERTOS_SOURCE)/include" \
 	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
 	-I"$(PROJECT_ROOT)/bsp/install/include" \
-	-I"$(PROJECT_ROOT)/freedom-metal" \
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \
@@ -26,7 +26,7 @@ C_FLAGS := \
 	-ffunction-sections -fdata-sections
 
 # Each subdirectory must supply rules for building sources it contributes
-FreeRTOS/portable/MemMang/heap_4.o: $(FREERTOS_SOURCE)/portable/MemMang/heap_4.c
+./FreeRTOS/portable/MemMang/heap_4.o: $(FREERTOS_SOURCE)/portable/MemMang/heap_4.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
 	riscv64-unknown-elf-gcc $(C_INCLUDES) $(C_FLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

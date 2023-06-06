@@ -15,12 +15,12 @@ C_DEPS += \
 ./src/main.d \
 ./src/sifive.d 
 
-C_INCLUDES += \
+C_INCLUDES := \
 	-I"$(PROJECT_ROOT)" \
+	-I"$(METAL_SDK_PATH)" \
 	-I"$(FREERTOS_SOURCE)/include" \
 	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
 	-I"$(PROJECT_ROOT)/bsp/install/include" \
-	-I"$(PROJECT_ROOT)/freedom-metal"
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \
