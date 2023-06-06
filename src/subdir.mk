@@ -16,11 +16,11 @@ C_DEPS += \
 ./src/sifive.d 
 
 C_INCLUDES := \
-	-I"$(PROJECT_ROOT)" \
-	-I"$(METAL_SDK_PATH)" \
-	-I"$(FREERTOS_SOURCE)/include" \
-	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
-	-I"$(PROJECT_ROOT)/bsp/install/include" \
+	-I"$(XRTOS_ROOT_PATH)" \
+	-I"$(FREEDOM_METAL_PATH)" \
+	-I"$(FREERTOS_SOURCE_PATH)/include" \
+	-I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V" \
+	-I"$(XRTOS_ROOT_PATH)/bsp/install/include" \
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \

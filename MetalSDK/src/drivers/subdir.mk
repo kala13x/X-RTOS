@@ -4,37 +4,37 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-$(METAL_SDK_PATH)/src/drivers/fixed-clock.c \
-$(METAL_SDK_PATH)/src/drivers/fixed-factor-clock.c \
-$(METAL_SDK_PATH)/src/drivers/inline.c \
-$(METAL_SDK_PATH)/src/drivers/riscv_clint0.c \
-$(METAL_SDK_PATH)/src/drivers/riscv_cpu.c \
-$(METAL_SDK_PATH)/src/drivers/riscv_plic0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_buserror0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_ccache0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_clic0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_fe310-g000_hfrosc.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_fe310-g000_hfxosc.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_fe310-g000_lfrosc.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_fe310-g000_pll.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_fe310-g000_prci.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_global-external-interrupts0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_gpio-buttons.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_gpio-leds.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_gpio-switches.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_gpio0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_i2c0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_l2pf0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_local-external-interrupts0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_pwm0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_rtc0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_simuart0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_spi0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_test0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_trace.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_uart0.c \
-$(METAL_SDK_PATH)/src/drivers/sifive_wdog0.c \
-$(METAL_SDK_PATH)/src/drivers/ucb_htif0.c
+$(FREEDOM_METAL_PATH)/src/drivers/fixed-clock.c \
+$(FREEDOM_METAL_PATH)/src/drivers/fixed-factor-clock.c \
+$(FREEDOM_METAL_PATH)/src/drivers/inline.c \
+$(FREEDOM_METAL_PATH)/src/drivers/riscv_clint0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/riscv_cpu.c \
+$(FREEDOM_METAL_PATH)/src/drivers/riscv_plic0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_buserror0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_ccache0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_clic0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_fe310-g000_hfrosc.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_fe310-g000_hfxosc.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_fe310-g000_lfrosc.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_fe310-g000_pll.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_fe310-g000_prci.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_global-external-interrupts0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_gpio-buttons.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_gpio-leds.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_gpio-switches.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_gpio0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_i2c0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_l2pf0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_local-external-interrupts0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_pwm0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_rtc0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_simuart0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_spi0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_test0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_trace.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_uart0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/sifive_wdog0.c \
+$(FREEDOM_METAL_PATH)/src/drivers/ucb_htif0.c
 
 OBJS += \
 ./MetalSDK/src/drivers/fixed-clock.o \
@@ -103,11 +103,11 @@ C_DEPS += \
 ./MetalSDK/src/drivers/ucb_htif0.d 
 
 C_INCLUDES := \
-	-I"$(PROJECT_ROOT)" \
-	-I"$(METAL_SDK_PATH)" \
-	-I"$(FREERTOS_SOURCE)/include" \
-	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
-	-I"$(PROJECT_ROOT)/bsp/install/include" \
+	-I"$(XRTOS_ROOT_PATH)" \
+	-I"$(FREEDOM_METAL_PATH)" \
+	-I"$(FREERTOS_SOURCE_PATH)/include" \
+	-I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V" \
+	-I"$(XRTOS_ROOT_PATH)/bsp/install/include" \
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \
@@ -116,7 +116,7 @@ C_FLAGS := \
 	-ffunction-sections -fdata-sections
 
 # Each subdirectory must supply rules for building sources it contributes
-./MetalSDK/src/drivers/%.o: $(METAL_SDK_PATH)/src/drivers/%.c
+./MetalSDK/src/drivers/%.o: $(FREEDOM_METAL_PATH)/src/drivers/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
 	riscv64-unknown-elf-gcc $(C_INCLUDES) $(C_FLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

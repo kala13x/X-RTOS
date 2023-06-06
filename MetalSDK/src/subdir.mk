@@ -4,38 +4,38 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-$(METAL_SDK_PATH)/src/atomic.c \
-$(METAL_SDK_PATH)/src/button.c \
-$(METAL_SDK_PATH)/src/cache.c \
-$(METAL_SDK_PATH)/src/clock.c \
-$(METAL_SDK_PATH)/src/cpu.c \
-$(METAL_SDK_PATH)/src/gpio.c \
-$(METAL_SDK_PATH)/src/hpm.c \
-$(METAL_SDK_PATH)/src/i2c.c \
-$(METAL_SDK_PATH)/src/init.c \
-$(METAL_SDK_PATH)/src/interrupt.c \
-$(METAL_SDK_PATH)/src/led.c \
-$(METAL_SDK_PATH)/src/lock.c \
-$(METAL_SDK_PATH)/src/memory.c \
-$(METAL_SDK_PATH)/src/pmp.c \
-$(METAL_SDK_PATH)/src/privilege.c \
-$(METAL_SDK_PATH)/src/pwm.c \
-$(METAL_SDK_PATH)/src/rtc.c \
-$(METAL_SDK_PATH)/src/shutdown.c \
-$(METAL_SDK_PATH)/src/spi.c \
-$(METAL_SDK_PATH)/src/switch.c \
-$(METAL_SDK_PATH)/src/synchronize_harts.c \
-$(METAL_SDK_PATH)/src/time.c \
-$(METAL_SDK_PATH)/src/timer.c \
-$(METAL_SDK_PATH)/src/tty.c \
-$(METAL_SDK_PATH)/src/uart.c \
-$(METAL_SDK_PATH)/src/watchdog.c
+$(FREEDOM_METAL_PATH)/src/atomic.c \
+$(FREEDOM_METAL_PATH)/src/button.c \
+$(FREEDOM_METAL_PATH)/src/cache.c \
+$(FREEDOM_METAL_PATH)/src/clock.c \
+$(FREEDOM_METAL_PATH)/src/cpu.c \
+$(FREEDOM_METAL_PATH)/src/gpio.c \
+$(FREEDOM_METAL_PATH)/src/hpm.c \
+$(FREEDOM_METAL_PATH)/src/i2c.c \
+$(FREEDOM_METAL_PATH)/src/init.c \
+$(FREEDOM_METAL_PATH)/src/interrupt.c \
+$(FREEDOM_METAL_PATH)/src/led.c \
+$(FREEDOM_METAL_PATH)/src/lock.c \
+$(FREEDOM_METAL_PATH)/src/memory.c \
+$(FREEDOM_METAL_PATH)/src/pmp.c \
+$(FREEDOM_METAL_PATH)/src/privilege.c \
+$(FREEDOM_METAL_PATH)/src/pwm.c \
+$(FREEDOM_METAL_PATH)/src/rtc.c \
+$(FREEDOM_METAL_PATH)/src/shutdown.c \
+$(FREEDOM_METAL_PATH)/src/spi.c \
+$(FREEDOM_METAL_PATH)/src/switch.c \
+$(FREEDOM_METAL_PATH)/src/synchronize_harts.c \
+$(FREEDOM_METAL_PATH)/src/time.c \
+$(FREEDOM_METAL_PATH)/src/timer.c \
+$(FREEDOM_METAL_PATH)/src/tty.c \
+$(FREEDOM_METAL_PATH)/src/uart.c \
+$(FREEDOM_METAL_PATH)/src/watchdog.c
 
 S_UPPER_SRCS += \
-$(METAL_SDK_PATH)/src/entry.S \
-$(METAL_SDK_PATH)/src/scrub.S \
-$(METAL_SDK_PATH)/src/trap.S \
-$(METAL_SDK_PATH)/src/vector.S 
+$(FREEDOM_METAL_PATH)/src/entry.S \
+$(FREEDOM_METAL_PATH)/src/scrub.S \
+$(FREEDOM_METAL_PATH)/src/trap.S \
+$(FREEDOM_METAL_PATH)/src/vector.S 
 
 OBJS += \
 ./MetalSDK/src/atomic.o \
@@ -98,11 +98,11 @@ C_DEPS += \
 ./MetalSDK/src/watchdog.d 
 
 C_INCLUDES := \
-	-I"$(PROJECT_ROOT)" \
-	-I"$(METAL_SDK_PATH)" \
-	-I"$(FREERTOS_SOURCE)/include" \
-	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
-	-I"$(PROJECT_ROOT)/bsp/install/include" \
+	-I"$(XRTOS_ROOT_PATH)" \
+	-I"$(FREEDOM_METAL_PATH)" \
+	-I"$(FREERTOS_SOURCE_PATH)/include" \
+	-I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V" \
+	-I"$(XRTOS_ROOT_PATH)/bsp/install/include" \
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \
@@ -110,17 +110,17 @@ C_FLAGS := \
 	--specs=nano.specs -Wno-unused-parameter \
 	-ffunction-sections -fdata-sections
 
-ASM_INCLUDES := -I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V/chip_specific_extensions/RV32I_CLINT_no_extensions"
+ASM_INCLUDES := -I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V/chip_specific_extensions/RV32I_CLINT_no_extensions"
 
 # Each subdirectory must supply rules for building sources it contributes
-./MetalSDK/src/%.o: $(METAL_SDK_PATH)/src/%.c
+./MetalSDK/src/%.o: $(FREEDOM_METAL_PATH)/src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
 	riscv64-unknown-elf-gcc $(C_INCLUDES) $(C_FLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-./MetalSDK/src/%.o: $(METAL_SDK_PATH)/src/%.S
+./MetalSDK/src/%.o: $(FREEDOM_METAL_PATH)/src/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Assembler'
 	riscv64-unknown-elf-gcc -march=rv32imac -mabi=ilp32 -mcmodel=medlow -c -g3 $(ASM_INCLUDES) -o "$@" "$<"

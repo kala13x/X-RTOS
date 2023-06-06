@@ -4,42 +4,42 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-$(METAL_SDK_PATH)/gloss/nanosleep.c \
-$(METAL_SDK_PATH)/gloss/sys_access.c \
-$(METAL_SDK_PATH)/gloss/sys_chdir.c \
-$(METAL_SDK_PATH)/gloss/sys_chmod.c \
-$(METAL_SDK_PATH)/gloss/sys_chown.c \
-$(METAL_SDK_PATH)/gloss/sys_clock_gettime.c \
-$(METAL_SDK_PATH)/gloss/sys_close.c \
-$(METAL_SDK_PATH)/gloss/sys_execve.c \
-$(METAL_SDK_PATH)/gloss/sys_exit.c \
-$(METAL_SDK_PATH)/gloss/sys_faccessat.c \
-$(METAL_SDK_PATH)/gloss/sys_fork.c \
-$(METAL_SDK_PATH)/gloss/sys_fstat.c \
-$(METAL_SDK_PATH)/gloss/sys_fstatat.c \
-$(METAL_SDK_PATH)/gloss/sys_ftime.c \
-$(METAL_SDK_PATH)/gloss/sys_getcwd.c \
-$(METAL_SDK_PATH)/gloss/sys_getpid.c \
-$(METAL_SDK_PATH)/gloss/sys_gettimeofday.c \
-$(METAL_SDK_PATH)/gloss/sys_isatty.c \
-$(METAL_SDK_PATH)/gloss/sys_kill.c \
-$(METAL_SDK_PATH)/gloss/sys_link.c \
-$(METAL_SDK_PATH)/gloss/sys_lseek.c \
-$(METAL_SDK_PATH)/gloss/sys_lstat.c \
-$(METAL_SDK_PATH)/gloss/sys_open.c \
-$(METAL_SDK_PATH)/gloss/sys_openat.c \
-$(METAL_SDK_PATH)/gloss/sys_read.c \
-$(METAL_SDK_PATH)/gloss/sys_sbrk.c \
-$(METAL_SDK_PATH)/gloss/sys_stat.c \
-$(METAL_SDK_PATH)/gloss/sys_sysconf.c \
-$(METAL_SDK_PATH)/gloss/sys_times.c \
-$(METAL_SDK_PATH)/gloss/sys_unlink.c \
-$(METAL_SDK_PATH)/gloss/sys_utime.c \
-$(METAL_SDK_PATH)/gloss/sys_wait.c \
-$(METAL_SDK_PATH)/gloss/sys_write.c
+$(FREEDOM_METAL_PATH)/gloss/nanosleep.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_access.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_chdir.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_chmod.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_chown.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_clock_gettime.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_close.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_execve.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_exit.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_faccessat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_fork.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_fstat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_fstatat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_ftime.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_getcwd.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_getpid.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_gettimeofday.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_isatty.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_kill.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_link.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_lseek.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_lstat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_open.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_openat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_read.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_sbrk.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_stat.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_sysconf.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_times.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_unlink.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_utime.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_wait.c \
+$(FREEDOM_METAL_PATH)/gloss/sys_write.c
 
 S_UPPER_SRCS += \
-$(METAL_SDK_PATH)/gloss/crt0.S 
+$(FREEDOM_METAL_PATH)/gloss/crt0.S 
 
 OBJS += \
 ./MetalSDK/gloss/crt0.o \
@@ -113,11 +113,11 @@ C_DEPS += \
 ./MetalSDK/gloss/sys_write.d 
 
 C_INCLUDES := \
-	-I"$(PROJECT_ROOT)" \
-	-I"$(METAL_SDK_PATH)" \
-	-I"$(FREERTOS_SOURCE)/include" \
-	-I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V" \
-	-I"$(PROJECT_ROOT)/bsp/install/include" \
+	-I"$(XRTOS_ROOT_PATH)" \
+	-I"$(FREEDOM_METAL_PATH)" \
+	-I"$(FREERTOS_SOURCE_PATH)/include" \
+	-I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V" \
+	-I"$(XRTOS_ROOT_PATH)/bsp/install/include" \
 
 C_FLAGS := \
 	-O0 -g3 -Wall -Wextra -c -fmessage-length=0 \
@@ -125,17 +125,17 @@ C_FLAGS := \
 	--specs=nano.specs -Wno-unused-parameter \
 	-ffunction-sections -fdata-sections
 
-ASM_INCLUDES := -I"$(FREERTOS_SOURCE)/portable/GCC/RISC-V/chip_specific_extensions/RV32I_CLINT_no_extensions"
+ASM_INCLUDES := -I"$(FREERTOS_SOURCE_PATH)/portable/GCC/RISC-V/chip_specific_extensions/RV32I_CLINT_no_extensions"
 
 # Each subdirectory must supply rules for building sources it contributes
-./MetalSDK/gloss/%.o: $(METAL_SDK_PATH)/gloss/%.S
+./MetalSDK/gloss/%.o: $(FREEDOM_METAL_PATH)/gloss/%.S
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Assembler'
 	riscv64-unknown-elf-gcc -march=rv32imac -mabi=ilp32 -mcmodel=medlow -c -g3 $(ASM_INCLUDES) -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-./MetalSDK/gloss/%.o: $(METAL_SDK_PATH)/gloss/%.c
+./MetalSDK/gloss/%.o: $(FREEDOM_METAL_PATH)/gloss/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
 	riscv64-unknown-elf-gcc $(C_INCLUDES) $(C_FLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

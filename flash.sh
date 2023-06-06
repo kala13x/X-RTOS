@@ -1,5 +1,8 @@
 #!/bin/bash
-export PATH=$PATH:/opt/risk-v/toolchains/riscv64-unknown-elf-toolchain-10.2.0-x86_64/bin/
+source ./env.sh
+
+make clean
+./build.sh
 
 JLINK_OPTIONS="-device FE310 -if JTAG -speed 4000"
 GDB=riscv64-unknown-elf-gdb
